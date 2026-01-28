@@ -7,11 +7,8 @@ import java.util.List;
 public class BaseballNumber {
     private final List<Integer> numbers;
 
-    public BaseballNumber(int num){
-        this.numbers = new ArrayList<>();
-        numbers.add(num/100);
-        numbers.add(num/10 % 10);
-        numbers.add(num % 10);
+    public BaseballNumber(List<Integer> numbers){
+        this.numbers = numbers;
     }
 
     public boolean isValid(){

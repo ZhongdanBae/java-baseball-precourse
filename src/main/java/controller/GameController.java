@@ -7,8 +7,23 @@ import state.GameState;
 import state.ProgressState;
 
 public class GameController {
-    
+    public Game game;
+    public NumberGenerator numberGenerator;
 
+    public void run(){
+        initialize();
+        play();
+    }
 
+    public void initialize(){
+        this.numberGenerator = new NumberGenerator();
+        BaseballNumber baseballNumber = numberGenerator.generate();
+        GameState initialGameState = new ProgressState(baseballNumber);
 
+        this.game = new Game(InitialGameState);
+    }
+
+    public void play(){
+
+    }
 }
