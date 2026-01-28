@@ -1,9 +1,28 @@
 package model;
 
-public class BaseballNumber {
-    private int number;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
-    boolean isValid(){
-        return number >= 111 && number <= 999;
+public class BaseballNumber {
+    private final List<Integer> numbers;
+
+    public BaseballNumber(int num){
+        this.numbers = new ArrayList<>();
+        numbers.add(num/100);
+        numbers.add(num/10 % 10);
+        numbers.add(num % 10);
     }
+
+    public boolean isValid(){
+        if(numbers.get(0) < 0 || numbers.get(0) >= 10) return false;
+        if(numbers.get(1) < 0 || numbers.get(1) >= 10) return false;
+        if(numbers.get(2) < 0 || numbers.get(2) >= 10) return false;
+
+        if(numbers.get(0).equals(numbers.get(1)) || numbers.get(1).equals(numbers.get(2)) || numbers.get(0).equals(numbers.get(2))) return false;
+
+        return true;
+    }
+
+
 }

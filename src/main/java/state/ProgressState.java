@@ -1,4 +1,5 @@
 package state;
 
-public class ProgressState {
+public class ProgressState implements GameState{
+
 }
