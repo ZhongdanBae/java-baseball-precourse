@@ -27,6 +27,33 @@ public class BaseballNumber {
         return new ArrayList<>(numbers);
     }
 
+    public GameResult compare(BaseballNumber target){
+        int strike = countStrike(target);
+        int ball = countBall(target);
+        return new GameResult(strike, ball);
+    }
+
+    private int countStrike(BaseballNumber target){
+        List<Integer> targetNumbers = target.getNumbers();
+        int strike = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if(numbers.get(i).equals(targetNumbers.get(i))) strike++;
+        }
+        return strike;
+    }
+
+    private int countBall(BaseballNumber target){
+        List<Integer> targetNumbers = target.getNumbers();
+        int ball = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            for (int j = 0; j < targetNumbers.size(); j++) {
+                if(i == j) continue;
+                if(numbers.get(i).equals(targetNumbers.get(j))) ball++;
+            }
+        }
+        return ball;
+    }
+
     private List<Integer> parse(String input){
         if(input == null) throw new IllegalArgumentException("입력값이 비어 있습니다.");
         if(input.length() != 3) throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
