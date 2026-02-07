@@ -20,10 +20,12 @@ public class GameController {
         BaseballNumber baseballNumber = numberGenerator.generate();
         GameState initialGameState = new ProgressState(baseballNumber);
 
-        this.game = new Game(InitialGameState);
+        this.game = new Game(initialGameState);
     }
 
     public void play(){
+        while(game.isRunning()){
 
+        }
     }
 }
